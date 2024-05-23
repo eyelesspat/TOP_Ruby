@@ -11,4 +11,10 @@ def caesar_cipher(string, shift_factor)
   puts array.map(&:chr).join
 end
 
-caesar_cipher('What a string!', 5)
+print 'Enter a string to encode: '
+string = gets.chomp
+
+print 'Enter the shift factor for the string: '
+shift_factor = gets.chomp.to_i
+
+caesar_cipher(string, shift_factor)
