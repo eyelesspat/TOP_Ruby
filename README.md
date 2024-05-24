@@ -5,3 +5,4 @@ This is a repository for Ruby exercises from 'The Odin Project'. Each file repre
 Completed exercises:
 Caesar cipher
 Sub strings
+Stock picker
