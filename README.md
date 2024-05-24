@@ -6,3 +6,4 @@ Completed exercises:
 Caesar cipher
 Sub strings
 Stock picker
+Bubble sort
