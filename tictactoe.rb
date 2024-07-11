@@ -77,21 +77,20 @@ class PlayGame
   def player_turn
     @game_over = false
     @valid_inputs = [0, 1, 2]
-    while true
+
+    loop do
       if @turn == 1
         puts 'Player1 turn'
         game_loop
-
         @board[@row][@column] = @player1
         @turn = 2
       else
         puts 'Player2 turn'
         game_loop
-
         @board[@row][@column] = @player2
-
         @turn = 1
       end
+
       print_board
       result = check_score
       if result
