@@ -29,13 +29,9 @@ class PlayGame
     exact_matches = 0
     partial_matches = 0
 
-    # Check for exact matches
+    # Check for matches
     @correct_code.each_with_index do |num, index|
       exact_matches += 1 if @player_guess[index] == num
-    end
-
-    # Check for partial matches (correct number, wrong position)
-    @correct_code.each_with_index do |num, index|
       partial_matches += 1 if @player_guess.include?(num) && @player_guess[index] != num
     end
 
