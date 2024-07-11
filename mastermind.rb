@@ -1,20 +1,24 @@
 class PlayGame
   def initialize
-    @correct_code = [1, 2, 3, 4]
+    @correct_code = Array.new(4) { rand(10) }
     @is_playing = false
   end
 
   def guesses
-    puts 'Guess first'
-    first_guess = gets.chomp.to_i
-    puts 'Guess second'
-    second_guess = gets.chomp.to_i
-    puts 'Guess third'
-    third_guess = gets.chomp.to_i
-    puts 'Guess fourth'
-    fourth_guess = gets.chomp.to_i
+    @player_guess = []
+    puts 'Guess'
+    4.times do |_i|
+      loop do
+        guess = gets.chomp.to_i
 
-    @player_guess = [first_guess, second_guess, third_guess, fourth_guess]
+        if (0..9).include?(guess)
+          @player_guess.push(guess)
+          break
+        else
+          puts 'Invalid input'
+        end
+      end
+    end
   end
 
   def start_game
