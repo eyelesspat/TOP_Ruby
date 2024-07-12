@@ -9,3 +9,4 @@ Stock picker
 Bubble sort
 TicTacToe (player input to be improved)
 mastermind
+hangman(added base game)
