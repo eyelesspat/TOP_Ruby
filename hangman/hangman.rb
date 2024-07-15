@@ -7,6 +7,7 @@ class Game
     @array = @current_word.map { '_' }
     @game_running = true
     @saved_game = nil
+    @guesses_left = 10
   end
 
   def start_game
@@ -19,10 +20,8 @@ class Game
   end
 
   def player_guess
-    guesses_left = 10
-
     while @game_running
-      if guesses_left != 0
+      if @guesses_left != 0
         initial_array = @array.dup
         if @array.include?('_')
           puts "Word: #{@array.join(' ')}"
@@ -34,10 +33,10 @@ class Game
             @array[index] = guess if char == guess
           end
 
-          guesses_left -= 1 if initial_array == @array
+          @guesses_left -= 1 if initial_array == @array
 
           puts "Current guess: #{@array.join(' ')}"
-          puts "Guesses left: #{guesses_left}"
+          puts "Guesses left: #{@guesses_left}"
 
           save_game if ask_to_save_game
         else
@@ -61,7 +60,8 @@ class Game
     @game_save = {
       current_word: @current_word,
       array: @array,
-      game_running: @game_running
+      game_running: @game_running,
+      guesses_left: @guesses_left
     }
     File.open('game_save.json', 'w') do |file|
       file.puts JSON.dump(@game_save)
@@ -84,6 +84,7 @@ class Game
       @current_word = @saved_game_state[:current_word]
       @array = @saved_game_state[:array]
       @game_running = @saved_game_state[:game_running]
+      @guesses_left = @saved_game_state[:guesses_left]
     else
       puts 'No saved game found'
     end
